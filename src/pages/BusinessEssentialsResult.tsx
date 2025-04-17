@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 function BusinessEssentialsResult() {
   const location = useLocation();
@@ -17,7 +17,6 @@ function BusinessEssentialsResult() {
     });
   };
 
-  // 🧠 Split the business plan into phases
   const extractPhases = (text: string) => {
     const regex = /(📍 Phase \d+:.*?)(?=📍 Phase \d+:|$)/gs;
     const matches = [...text.matchAll(regex)];
@@ -48,35 +47,63 @@ function BusinessEssentialsResult() {
   }
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-          Your Personalized Business Plan
-        </h2>
+    <>
+      {/* Top Navigation */}
+      <nav className="w-full bg-white shadow-sm py-3 px-6 flex justify-between items-center">
+        <div className="text-xl font-bold text-green-700">Help Ridge</div>
+        <div className="space-x-4 text-sm sm:text-base">
+          <Link to="/" className="text-gray-700 hover:text-green-600 font-medium">
+            Home
+          </Link>
+          <Link to="/market-analysis" className="text-gray-700 hover:text-green-600">
+            Market Analysis
+          </Link>
+          <Link to="/financial-planning" className="text-gray-700 hover:text-green-600">
+            Financial Planning
+          </Link>
+          <Link to="/business-qa" className="text-gray-700 hover:text-green-600">
+            Business Q&A
+          </Link>
+          <Link to="/side-hustles" className="text-gray-700 hover:text-green-600">
+            Trending Side Hustles
+          </Link>
+          <Link to="/skills" className="text-gray-700 hover:text-green-600">
+            Skill-Based Matching
+          </Link>
+        </div>
+      </nav>
 
-        {phases.map((phase, index) => (
-          <div key={index} className="mb-6">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-medium text-gray-700">{phase.title}</h3>
-              <button
-                onClick={() => handleHelpClick(phase.title, phase.content)}
-                className="text-sm text-blue-600 underline"
-              >
-                Need help with this phase?
-              </button>
+      {/* Page Content */}
+      <main className="max-w-3xl mx-auto px-4 py-12">
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            Your Personalized Business Plan
+          </h2>
+
+          {phases.map((phase, index) => (
+            <div key={index} className="mb-6">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-medium text-gray-700">{phase.title}</h3>
+                <button
+                  onClick={() => handleHelpClick(phase.title, phase.content)}
+                  className="text-sm text-blue-600 underline"
+                >
+                  Need help with this phase?
+                </button>
+              </div>
+              <p className="text-gray-600 whitespace-pre-line">{phase.content}</p>
             </div>
-            <p className="text-gray-600 whitespace-pre-line">{phase.content}</p>
-          </div>
-        ))}
+          ))}
 
-        <button
-          onClick={() => navigate('/business-essentials')}
-          className="mt-8 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
-        >
-          ← Back to Form
-        </button>
-      </div>
-    </main>
+          <button
+            onClick={() => navigate('/business-essentials')}
+            className="mt-8 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
+          >
+            ← Back to Form
+          </button>
+        </div>
+      </main>
+    </>
   );
 }
 

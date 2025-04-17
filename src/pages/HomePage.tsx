@@ -28,15 +28,27 @@ function HomePage() {
             Get Started →
           </button>
         </div>
-        <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 transform hover:scale-105 transition-transform duration-200">
+        <div 
+          className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 transform hover:scale-105 transition-transform duration-200 cursor-pointer"
+          onClick={() => navigate('/market-analysis')}
+        >
           <Target className="h-8 w-8 text-green-600 mb-4" />
           <h3 className="text-lg font-semibold mb-2">Market Analysis</h3>
           <p className="text-gray-600">Get insights into your target market, understand consumer behaviour, and identify opportunities</p>
+          <button className="mt-4 text-green-600 hover:text-green-700 font-medium">
+            Analyze Market →
+          </button>
         </div>
-        <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 transform hover:scale-105 transition-transform duration-200">
+        <div 
+          className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 transform hover:scale-105 transition-transform duration-200 cursor-pointer"
+          onClick={() => navigate('/financial-planning')}
+        >
           <DollarSign className="h-8 w-8 text-green-600 mb-4" />
           <h3 className="text-lg font-semibold mb-2">Financial Planning</h3>
           <p className="text-gray-600">Understand tax implications, explore funding options, and create a solid financial foundation</p>
+          <button className="mt-4 text-green-600 hover:text-green-700 font-medium">
+            Plan Finances →
+          </button>
         </div>
       </div>
 

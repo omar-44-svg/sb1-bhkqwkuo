@@ -40,7 +40,6 @@ function BusinessEssentials() {
 
       const aiOutput = await n8nResponse.json();
 
-      // ✅ Normalize the output keys to match the expected structure in BusinessEssentialsResult
       const normalizedOutput = {
         businessPlan: aiOutput.BusinessPlan || aiOutput.businessPlan,
         marketAnalysis: aiOutput.MarketAnalysis || aiOutput.marketAnalysis,
@@ -48,24 +47,25 @@ function BusinessEssentials() {
         nextSteps: aiOutput.NextSteps || aiOutput.nextSteps,
       };
 
-      // Optional: store the result in Supabase
-      const supabaseResponse = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-output`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          input: formData,
-          output: normalizedOutput,
-        }),
-      });
+      const supabaseResponse = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-output`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            input: formData,
+            output: normalizedOutput,
+          }),
+        }
+      );
 
       if (!supabaseResponse.ok) {
         console.warn('Failed to store AI output');
       }
 
-      // ✅ Navigate with normalized output
       navigate('/business-essentials/result', { state: { aiResponse: normalizedOutput } });
     } catch (error) {
       console.error('Error:', error);
@@ -75,7 +75,10 @@ function BusinessEssentials() {
     }
   };
 
-  const isFormValid = formData.idea.trim() && formData.budget.trim() && formData.location.trim();
+  const isFormValid =
+    formData.idea.trim() !== '' &&
+    formData.budget.trim() !== '' &&
+    formData.location.trim() !== '';
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -149,7 +152,9 @@ function BusinessEssentials() {
               disabled={isLoading || !isFormValid}
               className="w-full px-6 py-3 rounded-lg text-white font-medium bg-green-600 hover:bg-green-700 flex items-center justify-center"
             >
-              {isLoading ? 'Creating Your Plan...' : (
+              {isLoading ? (
+                'Creating Your Plan...'
+              ) : (
                 <>
                   <span>Get Your Personalised Business Plan</span>
                   <Send className="ml-2 w-4 h-4" />
