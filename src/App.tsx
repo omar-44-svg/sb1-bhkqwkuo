@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Brain } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import BusinessEssentials from './pages/BusinessEssentials';
-import BusinessEssentialsResult from './pages/BusinessEssentialsResult'; // ✅ Add this
-import BusinessPhaseHelp from './pages/BusinessPhaseHelp'; // ✅ Add this
+import BusinessEssentialsResult from './pages/BusinessEssentialsResult';
+import BusinessPhaseHelp from './pages/BusinessPhaseHelp';
 import QAPage from './pages/QAPage';
 import TrendsPage from './pages/TrendsPage';
 import SkillsPage from './pages/SkillsPage';
 import MarketAnalysis from './pages/MarketAnalysis';
+import CurrentStateAnalysis from './pages/market-analysis/CurrentStateAnalysis';
+import CompetitionAnalysis from './pages/market-analysis/CompetitionAnalysis';
+import TargetMarketAnalysis from './pages/market-analysis/TargetMarketAnalysis';
 import FinancialPlanning from './pages/FinancialPlanning';
 
 function App() {
@@ -39,9 +42,15 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/business-essentials" element={<BusinessEssentials />} />
-          <Route path="/business-essentials/result" element={<BusinessEssentialsResult />} /> {/* ✅ Result Page */}
-          <Route path="/business-essentials/help" element={<BusinessPhaseHelp />} /> {/* ✅ Help Page */}
+          <Route path="/business-essentials/result" element={<BusinessEssentialsResult />} />
+          <Route path="/business-essentials/help" element={<BusinessPhaseHelp />} />
+          
+          {/* Market Analysis Routes */}
           <Route path="/market-analysis" element={<MarketAnalysis />} />
+          <Route path="/market-analysis/current-state" element={<CurrentStateAnalysis />} />
+          <Route path="/market-analysis/competition" element={<CompetitionAnalysis />} />
+          <Route path="/market-analysis/target-market" element={<TargetMarketAnalysis />} />
+
           <Route path="/financial-planning" element={<FinancialPlanning />} />
           <Route path="/qa" element={<QAPage />} />
           <Route path="/trends" element={<TrendsPage />} />
