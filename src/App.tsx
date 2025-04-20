@@ -13,6 +13,7 @@ import CurrentStateAnalysis from './pages/market-analysis/CurrentStateAnalysis';
 import CompetitionAnalysis from './pages/market-analysis/CompetitionAnalysis';
 import TargetMarketAnalysis from './pages/market-analysis/TargetMarketAnalysis';
 import FinancialPlanning from './pages/FinancialPlanning';
+import FinancialResults from './pages/FinancialPlanningResults';
 
 function App() {
   return (
@@ -43,15 +44,13 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/business-essentials" element={<BusinessEssentials />} />
           <Route path="/business-essentials/result" element={<BusinessEssentialsResult />} />
-          <Route path="/business-essentials/help" element={<BusinessPhaseHelp />} />
-          
-          {/* Market Analysis Routes */}
+          <Route path="/business-phase-help" element={<BusinessPhaseHelp />} />
           <Route path="/market-analysis" element={<MarketAnalysis />} />
           <Route path="/market-analysis/current-state" element={<CurrentStateAnalysis />} />
           <Route path="/market-analysis/competition" element={<CompetitionAnalysis />} />
           <Route path="/market-analysis/target-market" element={<TargetMarketAnalysis />} />
-
           <Route path="/financial-planning" element={<FinancialPlanning />} />
+          <Route path="/financial-planning/results" element={<FinancialResults />} />
           <Route path="/qa" element={<QAPage />} />
           <Route path="/trends" element={<TrendsPage />} />
           <Route path="/skills" element={<SkillsPage />} />
