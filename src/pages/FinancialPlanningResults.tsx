@@ -2,15 +2,9 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface AIResponse {
-  label?: string;
-  value?: string;
-  icon?: string;
-  charts?: string;
-  revenue?: string;
-  expenses?: string;
-  idealPlanMarkdown?: string;
-  tailoredPlanMarkdown?: string;
-  cards?: { label: string; value: string; icon?: string }[]; // Assuming cards is an array
+  financialProjections?: string;
+  fundingOptions?: string;
+  riskAnalysis?: string;
   recommendations?: string[];
   error?: string;
 }
@@ -64,81 +58,24 @@ function FinancialResults() {
           </div>
 
           <div className="space-y-6">
-            {aiResponse.label && (
+            {aiResponse.financialProjections && (
               <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Label</h4>
-                <p className="text-gray-600">{aiResponse.label}</p>
+                <h4 className="font-medium text-gray-700">Financial Projections</h4>
+                <p className="text-gray-600">{aiResponse.financialProjections}</p>
               </div>
             )}
 
-            {aiResponse.value && (
+            {aiResponse.fundingOptions && (
               <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Value</h4>
-                <p className="text-gray-600">{aiResponse.value}</p>
+                <h4 className="font-medium text-gray-700">Funding Options</h4>
+                <p className="text-gray-600">{aiResponse.fundingOptions}</p>
               </div>
             )}
 
-            {aiResponse.icon && (
+            {aiResponse.riskAnalysis && (
               <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Icon</h4>
-                <p className="text-gray-600">{aiResponse.icon}</p>
-              </div>
-            )}
-
-            {aiResponse.charts && (
-              <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Charts</h4>
-                <p className="text-gray-600">{aiResponse.charts}</p>
-              </div>
-            )}
-
-            {aiResponse.revenue && (
-              <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Revenue</h4>
-                <p className="text-gray-600">{aiResponse.revenue}</p>
-              </div>
-            )}
-
-            {aiResponse.expenses && (
-              <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Expenses</h4>
-                <p className="text-gray-600">{aiResponse.expenses}</p>
-              </div>
-            )}
-
-            {aiResponse.idealPlanMarkdown && (
-              <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Ideal Plan</h4>
-                <div
-                  className="text-gray-600"
-                  dangerouslySetInnerHTML={{ __html: aiResponse.idealPlanMarkdown }}
-                />
-              </div>
-            )}
-
-            {aiResponse.tailoredPlanMarkdown && (
-              <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Tailored Plan</h4>
-                <div
-                  className="text-gray-600"
-                  dangerouslySetInnerHTML={{ __html: aiResponse.tailoredPlanMarkdown }}
-                />
-              </div>
-            )}
-
-            {/* Cards Section */}
-            {aiResponse.cards && aiResponse.cards.length > 0 && (
-              <div className="space-y-4">
-                <h4 className="font-medium text-gray-700">Cards</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {aiResponse.cards.map((card, index) => (
-                    <div key={index} className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                      {card.icon && <img src={card.icon} alt={card.label} className="h-12 w-12 mx-auto mb-4" />}
-                      <h5 className="text-xl font-semibold text-gray-700">{card.label}</h5>
-                      <p className="text-gray-600">{card.value}</p>
-                    </div>
-                  ))}
-                </div>
+                <h4 className="font-medium text-gray-700">Risk Analysis</h4>
+                <p className="text-gray-600">{aiResponse.riskAnalysis}</p>
               </div>
             )}
 

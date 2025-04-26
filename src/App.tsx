@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Brain } from 'lucide-react';
 
@@ -6,12 +6,16 @@ import HomePage from './pages/HomePage';
 import BusinessEssentials from './pages/BusinessEssentials';
 import BusinessEssentialsResult from './pages/BusinessEssentialsResult';
 import BusinessPhaseHelp from './pages/BusinessPhaseHelp';
+
 import MarketAnalysis from './pages/MarketAnalysis';
+
 import CurrentStateAnalysis from './pages/market-analysis/CurrentStateAnalysis';
 import CompetitionAnalysis from './pages/market-analysis/CompetitionAnalysis';
 import TargetMarketAnalysis from './pages/market-analysis/TargetMarketAnalysis';
+
 import FinancialPlanning from './pages/FinancialPlanning';
 import FinancialResults from './pages/FinancialPlanningResults';
+
 import BusinessQA from './pages/QAPage';
 import TrendingSideHustles from './pages/TrendsPage';
 import SkillBasedMatching from './pages/SkillsPage';
@@ -20,6 +24,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+        {/* Navigation */}
         <nav className="bg-white shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
@@ -41,23 +46,33 @@ function App() {
           </div>
         </nav>
 
+        {/* Routes */}
         <Routes>
           <Route path="/" element={<HomePage />} />
+
+          {/* Business Essentials */}
           <Route path="/business-essentials" element={<BusinessEssentials />} />
           <Route path="/business-essentials/result" element={<BusinessEssentialsResult />} />
           <Route path="/business-essentials/help" element={<BusinessPhaseHelp />} />
-          <Route path="/market-analysis" element={<MarketAnalysis />} />
-          <Route path="/market-analysis/current-state" element={<CurrentStateAnalysis />} />
-          <Route path="/market-analysis/competition" element={<CompetitionAnalysis />} />
-          <Route path="/market-analysis/target-market" element={<TargetMarketAnalysis />} />
+
+          {/* Market Analysis */}
+<Route path="/market-analysis" element={<MarketAnalysis />} /> {/* Page with the form */}
+
+
+          {/* Financial Planning */}
           <Route path="/financial-planning" element={<FinancialPlanning />} />
           <Route path="/financial-planning/results" element={<FinancialResults />} />
+
+          {/* Misc Pages */}
           <Route path="/business-qa" element={<BusinessQA />} />
           <Route path="/side-hustles" element={<TrendingSideHustles />} />
           <Route path="/skills" element={<SkillBasedMatching />} />
+
+          {/* 404 */}
           <Route path="*" element={<div className="p-12 text-center text-gray-500">Page not found</div>} />
         </Routes>
 
+        {/* Footer */}
         <footer className="bg-gray-50 mt-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <p className="text-center text-gray-500">
